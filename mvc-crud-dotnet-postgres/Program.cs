@@ -1,9 +1,16 @@
+using Microsoft.EntityFrameworkCore;
+using mvc_crud_dotnet_postgres.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-var app = builder.Build();
+builder.Services.AddEntityFrameworkNpgsql()
+    .AddDbContext<Contexto>(options => options.UseNpgsql("Host=localhost;Port=5432;Pooling=true;Database=MVC_CRUD_DOTNET_POSTGRES;User Id=postgres ;Password=teste;"));
+
+
+    var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
