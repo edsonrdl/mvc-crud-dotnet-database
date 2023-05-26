@@ -1,12 +1,13 @@
 using Microsoft.EntityFrameworkCore;
+using mvc_crud_dotnet_sql.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddDbContext<DbContext>
-    (Options => Options.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=CRUD_MVC_SQL_TESTE;Trusted_Connection=True;MultipleActiveResultSets=true"));
+builder.Services.AddDbContext<Contexto>
+    (Options => Options.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=MVC_CRUD_DOTNET_SQL;Trusted_Connection=True;MultipleActiveResultSets=true"));
 
 
 var app = builder.Build();
